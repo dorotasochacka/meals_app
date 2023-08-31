@@ -4,98 +4,65 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../widgets/filter_switch.dart';
 import '../providers/filters_provider.dart';
 
-class FiltersScreen extends ConsumerStatefulWidget {
+class FiltersScreen extends ConsumerWidget {
   const FiltersScreen({super.key});
 
   @override
-  ConsumerState<FiltersScreen> createState() => _FiltersScreenState();
-}
-
-class _FiltersScreenState extends ConsumerState<FiltersScreen> {
-  var _lactoseFreeFilterSet = false;
-  var _glutenFreeFilterSet = false;
-  var _vegetarianFilterSet = false;
-  var _veganFilterSet = false;
-
-  @override
-  void initState() {
-    super.initState();
-    final currentFilters = ref.read(filtersProvider);
-    _lactoseFreeFilterSet = currentFilters[Filter.glutenFree]!;
-    _glutenFreeFilterSet = currentFilters[Filter.lactoseFree]!;
-    _vegetarianFilterSet = currentFilters[Filter.vegetarian]!;
-    _veganFilterSet = currentFilters[Filter.vegan]!;
-  }
+  // void initState() {
+  //   super.initState();
+  //   final currentFilters = ref.read(filtersProvider);
+  //   _lactoseFreeFilterSet = currentFilters[Filter.glutenFree]!;
+  //   _glutenFreeFilterSet = currentFilters[Filter.lactoseFree]!;
+  //   _vegetarianFilterSet = currentFilters[Filter.vegetarian]!;
+  //   _veganFilterSet = currentFilters[Filter.vegan]!;
+  // }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final activeFilters = ref.watch(filtersProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your filters'),
       ),
-      // drawer: MainDrawer(onSelectScreen: (identifier) {
-      //   if (identifier == 'meals') {
-      //     Navigator.of(context).pop();
-      //     Navigator.of(context).pushReplacement(
-      //       MaterialPageRoute(builder: (ctx) {
-      //         return const TabsScreen();
-      //       }),
-      //     );
-      //   }
-      // }),
-      body: WillPopScope(
-        onWillPop: () async {
-          ref.read(filtersProvider.notifier).setFilters({
-            Filter.glutenFree: _glutenFreeFilterSet,
-            Filter.lactoseFree: _lactoseFreeFilterSet,
-            Filter.vegetarian: _vegetarianFilterSet,
-            Filter.vegan: _veganFilterSet,
-          });
-
-          //Navigator.of(context).pop();
-
-          return true;
-        },
-        child: Column(
-          children: [
-            FilterSwitch(
-              title: 'Gluten-free',
-              value: _glutenFreeFilterSet,
-              onChanged: (newValue) {
-                setState(() {
-                  _glutenFreeFilterSet = newValue;
-                });
-              },
-            ),
-            FilterSwitch(
-              title: 'Lactose-free',
-              value: _lactoseFreeFilterSet,
-              onChanged: (newValue) {
-                setState(() {
-                  _lactoseFreeFilterSet = newValue;
-                });
-              },
-            ),
-            FilterSwitch(
-              title: 'Vegetarian',
-              value: _vegetarianFilterSet,
-              onChanged: (newValue) {
-                setState(() {
-                  _vegetarianFilterSet = newValue;
-                });
-              },
-            ),
-            FilterSwitch(
-              title: 'Vegan',
-              value: _veganFilterSet,
-              onChanged: (newValue) {
-                setState(() {
-                  _veganFilterSet = newValue;
-                });
-              },
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          FilterSwitch(
+            title: 'Gluten-free',
+            value: activeFilters[Filter.glutenFree]!,
+            onChanged: (newValue) {
+              ref
+                  .read(filtersProvider.notifier)
+                  .setFilter(Filter.glutenFree, newValue);
+            },
+          ),
+          FilterSwitch(
+            title: 'Lactose-free',
+            value: activeFilters[Filter.lactoseFree]!,
+            onChanged: (newValue) {
+              ref
+                  .read(filtersProvider.notifier)
+                  .setFilter(Filter.lactoseFree, newValue);
+            },
+          ),
+          FilterSwitch(
+            title: 'Vegetarian',
+            value: activeFilters[Filter.vegetarian]!,
+            onChanged: (newValue) {
+              ref
+                  .read(filtersProvider.notifier)
+                  .setFilter(Filter.vegetarian, newValue);
+            },
+          ),
+          FilterSwitch(
+            title: 'Vegan',
+            value: activeFilters[Filter.vegan]!,
+            onChanged: (newValue) {
+              ref
+                  .read(filtersProvider.notifier)
+                  .setFilter(Filter.vegan, newValue);
+            },
+          ),
+        ],
       ),
     );
   }
