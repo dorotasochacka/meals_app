@@ -51,7 +51,7 @@ class MealsScreen extends StatelessWidget {
               height: 20,
             ),
             const Text(
-              'Try choose another category',
+              'Try to choose another category',
               textAlign: TextAlign.center,
             ),
           ],
