@@ -49,7 +49,7 @@ class MealItemTrait extends StatelessWidget {
 //     );
 //     return Scaffold(
 //       appBar: AppBar(
-//         title: Text(selectedMeal.title!),
+//         title: Text(selectedMeal.title!tgftftf),
 //       ),
 //       body: SingleChildScrollView(
 //         child: Container(
