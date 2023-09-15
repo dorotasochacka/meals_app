@@ -45,13 +45,13 @@ class MainDrawer extends StatelessWidget {
             leading: const Icon(
               Icons.restaurant,
               size: 26,
-              //color: Theme.of(context).colorScheme.onBackground,
             ),
             title: Text(
               'Meals',
-              style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                  //color: Theme.of(context).colorScheme.onBackground,
-                  fontSize: 24),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleSmall!
+                  .copyWith(fontSize: 24),
             ),
             onTap: () {
               onSelectScreen('meals');
@@ -61,13 +61,13 @@ class MainDrawer extends StatelessWidget {
             leading: const Icon(
               Icons.settings,
               size: 26,
-              //color: Theme.of(context).colorScheme.onBackground,
             ),
             title: Text(
               'Filters',
-              style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                  //color: Theme.of(context).colorScheme.onBackground,
-                  fontSize: 24),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleSmall!
+                  .copyWith(fontSize: 24),
             ),
             onTap: () {
               onSelectScreen('filters');
@@ -78,79 +78,3 @@ class MainDrawer extends StatelessWidget {
     );
   }
 }
-// import 'package:google_fonts/google_fonts.dart';
-
-// import '../screens/filters_screen.dart';
-
-// class MainDrawer extends StatelessWidget {
-//   const MainDrawer({super.key});
-
-//   Widget _buildDrawerItem(
-//       Icon icon, String title, String routeName, BuildContext context) {
-//     return ListTile(
-//       leading: icon,
-//       title: Text(
-//         title,
-//         style: GoogleFonts.robotoCondensed(
-//           fontSize: 18,
-//         ),
-//       ),
-//       onTap: () => Navigator.of(context).pushReplacementNamed(routeName),
-//       splashColor: Theme.of(context).primaryColor,
-//     );
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Drawer(
-//       backgroundColor: Theme.of(context).secondaryHeaderColor,
-//       child: Column(children: [
-//         Container(
-//           height: 120,
-//           width: double.infinity,
-//           padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
-//           alignment: Alignment.centerLeft,
-//           color: Theme.of(context).primaryColorLight,
-//           child: ListTile(
-//             leading: const Icon(Icons.fastfood_rounded, size: 60),
-//             title: FittedBox(
-//               child: Text(
-//                 'Cooking up!',
-//                 textAlign: TextAlign.center,
-//                 style: TextStyle(
-//                     fontWeight: FontWeight.w900,
-//                     fontSize: 32,
-//                     fontFamily: 'RobotoCondensed',
-//                     color: Theme.of(context).primaryColorDark),
-//               ),
-//             ),
-//           ),
-//         ),
-//         _buildDrawerItem(
-//           const Icon(Icons.restaurant),
-//           'Meals',
-//           '/',
-//           context,
-//         ),
-//         _buildDrawerItem(
-//           const Icon(Icons.settings),
-//           'Filters',
-//           FiltersScreen.routeName,
-//           context,
-//         ),
-//         _buildDrawerItem(
-//           const Icon(Icons.face),
-//           'Account',
-//           '/',
-//           context,
-//         ),
-//         _buildDrawerItem(
-//           const Icon(Icons.hail),
-//           'Log out',
-//           '/',
-//           context,
-//         ),
-//       ]),
-//     );
-//   }
-// }

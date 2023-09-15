@@ -29,15 +29,15 @@ class CategoryGridItem extends StatelessWidget {
           ),
         ),
         child: Center(
-            child: Text(
-          category.title!,
-          style: Theme.of(context)
-              .textTheme
-              .headlineSmall!
-              .copyWith(fontWeight: FontWeight.w500),
-          textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,
-        )),
+          child: Text(
+            category.title!,
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../screens/filters_screen.dart';
+import './filters_screen.dart';
 import './categories_screen.dart';
 import './meals_screen.dart';
 import '../widgets/main_drawer.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:meals_app/models/meal.dart';
+import '../models/meal.dart';
 import '../providers/favorites_provider.dart';
 
 class MealDetailsScreen extends ConsumerWidget {
@@ -35,7 +35,17 @@ class MealDetailsScreen extends ConsumerWidget {
                 )),
               );
             },
-            icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+            icon: AnimatedSwitcher(
+              transitionBuilder: (child, animation) => RotationTransition(
+                turns: Tween(begin: 0.7, end: 1.0).animate(animation),
+                child: child,
+              ),
+              duration: const Duration(milliseconds: 300),
+              child: Icon(
+                isFavorite ? Icons.favorite : Icons.favorite_border,
+                key: ValueKey(isFavorite),
+              ),
+            ),
           ),
         ],
       ),
@@ -44,11 +54,14 @@ class MealDetailsScreen extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.network(
-                meal.imageUrl,
-                width: double.infinity,
-                height: 300,
-                fit: BoxFit.cover,
+              Hero(
+                tag: meal.id,
+                child: Image.network(
+                  meal.imageUrl,
+                  width: double.infinity,
+                  height: 300,
+                  fit: BoxFit.cover,
+                ),
               ),
               const SizedBox(
                 height: 14,
@@ -100,14 +113,6 @@ class MealDetailsScreen extends ConsumerWidget {
               const SizedBox(
                 height: 10,
               ),
-              // for (final step in meal.steps)
-              //   ListTile(
-              //     leading: CircleAvatar(child: Text('s')),
-              //     title: Text(
-              //       step,
-              //       style: Theme.of(context).textTheme.bodyMedium,
-              //     ),
-              //   ),
             ],
           ),
         ),
