@@ -33,16 +33,5 @@ class FilterSwitch extends StatelessWidget {
       activeColor: Theme.of(context).colorScheme.tertiary,
       contentPadding: const EdgeInsets.only(left: 34, right: 22),
     );
-    //
-    // SwitchListTile(
-    //   title: Text(title),
-    //   subtitle: Text(description),
-    //   value: value,
-    //   onChanged: (newValue) {
-    //     setState(() {
-    //       widget.value = newValue;
-    //     });
-    //   },
-    // );
   }
 }
