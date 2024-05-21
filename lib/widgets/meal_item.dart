@@ -1,9 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-import '../models/meal.dart';
-import '../widgets/meal_item_trait.dart';
+import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/widgets/meal_item_trait.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;
@@ -12,13 +11,13 @@ class MealItem extends StatelessWidget {
   const MealItem({super.key, required this.meal, required this.onSelectMeal});
 
   String get complexityText {
-    return describeEnum(meal.complexity)[0].toUpperCase() +
-        describeEnum(meal.complexity).substring(1);
+    return meal.complexity.name[0].toUpperCase() +
+        meal.complexity.name.substring(1);
   }
 
   String get affordabilityText {
     return meal.affordability.name[0].toUpperCase() +
-        describeEnum(meal.affordability).substring(1);
+        meal.affordability.name.substring(1);
   }
 
   @override

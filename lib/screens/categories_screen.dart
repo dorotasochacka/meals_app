@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
-import './meals_screen.dart';
-import '../widgets/category_grid_item.dart';
-import '../models/category.dart';
-import '../models/meal.dart';
-import '../data.dart';
+import 'meals_screen.dart';
+import 'package:meals_app/widgets/category_grid_item.dart';
+import 'package:meals_app/models/category.dart';
+import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/data.dart';
 
 class CategoriesScreen extends StatefulWidget {
   final List<Meal> availableMeals;
